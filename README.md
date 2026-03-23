@@ -5,7 +5,7 @@
 ---
 
 ## 🔗 Live Demo
-👉 https://priyanshung1480.github.io/portfolio-website/
+👉 https://priyanshung1480.github.io/Portfolio-Website/
 
 ---
 
@@ -66,7 +66,7 @@ A passionate **Frontend Developer** focused on building modern, responsive, and 
 ---
 
 ## 📬 Contact Me
-📧 Email: your-email@gmail.com  
+📧 Email: priyanshung08l@gmail.com  
 
 ---
 
