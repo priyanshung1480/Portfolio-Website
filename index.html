@@ -3,164 +3,933 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Priyanshu Negi | Portfolio</title>
-
-  <!-- Bootstrap -->
+  <title>Priyanshu Negi | Frontend Developer Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- AOS Animation -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    :root {
+      --bg: #f5efe6;
+      --surface: rgba(255, 255, 255, 0.78);
+      --surface-strong: #ffffff;
+      --text: #1f2937;
+      --muted: #5b6472;
+      --line: rgba(31, 41, 55, 0.09);
+      --accent: #c06c2d;
+      --accent-dark: #8d4b1c;
+      --accent-soft: #f2d2b3;
+      --ink: #14213d;
+      --shadow: 0 24px 70px rgba(20, 33, 61, 0.12);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
       scroll-behavior: smooth;
-      font-family: 'Segoe UI', sans-serif;
     }
 
-    /* NAVBAR */
-    .navbar {
-      background: rgba(0,0,0,0.9);
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(192, 108, 45, 0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(20, 33, 61, 0.12), transparent 32%),
+        linear-gradient(180deg, #fbf8f3 0%, #f4ecdf 100%);
     }
 
-    /* HERO */
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .section-padding {
+      padding: 96px 0;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(192, 108, 45, 0.1);
+      color: var(--accent-dark);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2rem, 3vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.08;
+      margin: 20px 0 16px;
+      color: var(--ink);
+    }
+
+    .section-copy {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 18px 0;
+      background: rgba(251, 248, 243, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(20, 33, 61, 0.06);
+    }
+
+    .nav-shell {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(20, 33, 61, 0.08);
+      border-radius: 22px;
+      box-shadow: 0 14px 45px rgba(20, 33, 61, 0.08);
+      padding: 14px 18px;
+      position: relative;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--ink), #2e4a7d);
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      box-shadow: 0 10px 25px rgba(20, 33, 61, 0.2);
+    }
+
+    .brand-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .brand-subtitle {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    .nav-toggle-label {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid rgba(20, 33, 61, 0.12);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-left: auto;
+      background: #fff;
+    }
+
+    .nav-toggle-label span,
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+      display: block;
+      position: relative;
+      width: 20px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--ink);
+      transition: 0.3s ease;
+      content: "";
+    }
+
+    .nav-toggle-label span::before {
+      position: absolute;
+      top: -6px;
+    }
+
+    .nav-toggle-label span::after {
+      position: absolute;
+      top: 6px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-weight: 600;
+      padding: 10px 14px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      background: rgba(20, 33, 61, 0.06);
+      color: var(--ink);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #d88d4f);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 14px 24px rgba(192, 108, 45, 0.24);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .nav-cta:hover {
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px rgba(192, 108, 45, 0.28);
+    }
+
     .hero {
-  height: 100vh;
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-  url('https://wallpaperaccess.com/full/3239480.jpg');
-  background-size: cover;
-  background-position: center;
-  color: white;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  animation: zoomBg 20s infinite alternate;
-}
-
-    .hero h1 {
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
-}
-    .btn-custom {
-      background: linear-gradient(to right, red, orange);
-      border: none;
-      color: white;
-      padding: 10px 25px;
+      padding: 72px 0 48px;
     }
 
-    .btn-custom:hover {
-      opacity: 0.8;
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(20, 33, 61, 0.08);
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+      background:
+        radial-gradient(circle at top right, rgba(242, 210, 179, 0.95), transparent 32%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 249, 241, 0.88));
+      padding: 72px 56px;
     }
 
-    /* CARDS */
-    .card {
-      transition: 0.3s;
-      border: none;
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: auto -120px -120px auto;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(20, 33, 61, 0.06);
+      filter: blur(10px);
     }
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-dark);
+      margin-bottom: 18px;
     }
 
-    /* SECTION SPACING */
-    section {
-      padding: 70px 0;
+    .eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: var(--accent);
     }
 
-    /* FOOTER */
-    footer {
-      background: #000;
-      color: white;
+    .hero-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      line-height: 0.98;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 18px;
+      max-width: 720px;
+    }
+
+    .hero-title span {
+      color: var(--accent-dark);
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.85;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 38px;
+    }
+
+    .btn-primary-custom,
+    .btn-secondary-custom {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary-custom {
+      background: linear-gradient(135deg, var(--ink), #2f4a79);
+      color: #fff;
+      box-shadow: 0 18px 28px rgba(20, 33, 61, 0.2);
+    }
+
+    .btn-primary-custom:hover {
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary-custom {
+      border: 1px solid rgba(20, 33, 61, 0.12);
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--ink);
+    }
+
+    .btn-secondary-custom:hover {
+      color: var(--ink);
+      background: #fff;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .metric-card {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(20, 33, 61, 0.08);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .metric-value {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .metric-label {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .profile-card,
+    .glass-card,
+    .project-card,
+    .contact-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card {
+      padding: 32px;
+      height: 100%;
+    }
+
+    .profile-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(20, 33, 61, 0.06);
+      color: var(--ink);
+      font-weight: 700;
+      margin-bottom: 26px;
+    }
+
+    .profile-art {
+      min-height: 320px;
+      border-radius: 28px;
+      padding: 24px;
+      background:
+        linear-gradient(180deg, rgba(20, 33, 61, 0.96), rgba(39, 65, 108, 0.9)),
+        #14213d;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-art::before,
+    .profile-art::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .profile-art::before {
+      width: 180px;
+      height: 180px;
+      top: -40px;
+      right: -40px;
+    }
+
+    .profile-art::after {
+      width: 120px;
+      height: 120px;
+      bottom: 24px;
+      right: 36px;
+    }
+
+    .profile-art h3 {
+      position: relative;
+      z-index: 1;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2rem;
+      max-width: 280px;
+      margin-bottom: 12px;
+    }
+
+    .profile-art p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 300px;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .glass-card {
+      padding: 28px;
+      height: 100%;
+    }
+
+    .glass-card h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 14px;
+      color: var(--ink);
+    }
+
+    .glass-card p {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 38px;
+    }
+
+    .skill-chip {
+      padding: 24px;
+      border-radius: var(--radius-md);
+      background: #fff;
+      border: 1px solid rgba(20, 33, 61, 0.08);
+      box-shadow: 0 16px 40px rgba(20, 33, 61, 0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .skill-chip:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 40px rgba(20, 33, 61, 0.1);
+    }
+
+    .skill-chip h4 {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .skill-chip p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 44px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 50px rgba(20, 33, 61, 0.14);
+    }
+
+    .project-media {
+      aspect-ratio: 16 / 11;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ead9c4, #f8f2ea);
+    }
+
+    .project-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-body {
+      padding: 26px;
+    }
+
+    .project-tag {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(192, 108, 45, 0.12);
+      color: var(--accent-dark);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .project-body h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .project-link {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .project-link:hover {
+      color: var(--accent-dark);
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      margin-top: 44px;
+    }
+
+    .contact-card {
+      padding: 32px;
+    }
+
+    .contact-card h3 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-list a,
+    .contact-list span {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .contact-panel {
+      border-radius: 26px;
+      padding: 24px;
+      background: linear-gradient(160deg, var(--ink), #314c7a);
+      color: #fff;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    .contact-panel p {
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .footer {
+      padding: 28px 0 46px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 991.98px) {
+      .nav-shell {
+        padding: 14px;
+      }
+
+      .nav-toggle-label {
+        display: inline-flex;
+      }
+
+      .nav-menu {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        top: calc(100% + 12px);
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(20, 33, 61, 0.08);
+        box-shadow: 0 22px 40px rgba(20, 33, 61, 0.12);
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        margin: 0;
+      }
+
+      .nav-links a {
+        display: block;
+      }
+
+      .nav-cta {
+        width: 100%;
+      }
+
+      .nav-toggle:checked + .nav-toggle-label span {
+        background: transparent;
+      }
+
+      .nav-toggle:checked + .nav-toggle-label span::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      .nav-toggle:checked + .nav-toggle-label span::after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+
+      .nav-toggle:checked ~ .nav-menu {
+        display: flex;
+      }
+
+      .hero-panel {
+        padding: 56px 28px;
+      }
+
+      .hero-metrics,
+      .skill-grid,
+      .projects-grid,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .section-padding {
+        padding: 78px 0;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .hero {
+        padding-top: 36px;
+      }
+
+      .hero-title {
+        font-size: 2.6rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary-custom,
+      .btn-secondary-custom {
+        width: 100%;
+      }
+
+      .metric-card,
+      .glass-card,
+      .profile-card,
+      .contact-card {
+        padding: 24px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav-shell d-flex align-items-center gap-3">
+        <a href="#home" class="d-flex align-items-center gap-3">
+          <span class="brand-mark">PN</span>
+          <span>
+            <span class="d-block brand-title">Priyanshu Negi</span>
+            <span class="d-block brand-subtitle">Frontend Developer</span>
+          </span>
+        </a>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#">Priyanshu</a>
-  </div>
-</nav>
+        <input class="nav-toggle" type="checkbox" id="nav-toggle">
+        <label class="nav-toggle-label" for="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+        </label>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container" data-aos="fade-up">
-    <h1 class="display-3 fw-bold">Hi, I'm Priyanshu 👋</h1>
-    <p class="lead">Frontend Developer | Web Designer 🚀</p>
-    <a href="#projects" class="btn btn-custom mt-3">View My Work</a>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="container text-center" data-aos="fade-up">
-  <h2 class="mb-4">About Me</h2>
-  <p>I create modern, responsive and visually attractive websites using HTML, CSS, Bootstrap and JavaScript.</p>
-</section>
-
-<!-- SKILLS -->
-<section class="bg-light text-center" data-aos="fade-up">
-  <div class="container">
-    <h2 class="mb-4">My Skills</h2>
-    <div class="row">
-      <div class="col-md-3"><p>HTML</p></div>
-      <div class="col-md-3"><p>CSS</p></div>
-      <div class="col-md-3"><p>Bootstrap</p></div>
-      <div class="col-md-3"><p>JavaScript</p></div>
+        <div class="nav-menu">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <a class="nav-cta" href="mailto:priyanshung08@gmail.com">Hire Me</a>
+        </div>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- PROJECTS -->
-<section id="projects" class="container">
-  <h2 class="text-center mb-5">My Projects</h2>
-  <div class="row">
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-panel">
+          <div class="row g-5 align-items-center">
+            <div class="col-lg-8">
+              <div class="eyebrow">Available for freelance and full-time roles</div>
+              <h1 class="hero-title">I build <span>clean, conversion-focused</span> websites that make businesses look credible.</h1>
+              <p class="hero-copy">
+                I'm Priyanshu Negi, a frontend developer crafting responsive websites with strong visual polish, clear structure, and user-friendly experiences that impress clients, recruiters, hiring managers, and growing brands.
+              </p>
+              <div class="hero-actions">
+                <a href="#projects" class="btn-primary-custom">Explore Projects</a>
+                <a href="#contact" class="btn-secondary-custom">Let's Work Together</a>
+              </div>
+              <div class="hero-metrics">
+                <div class="metric-card">
+                  <div class="metric-value">3+</div>
+                  <p class="metric-label">Portfolio projects with distinct visual styles</p>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">100%</div>
+                  <p class="metric-label">Responsive layouts built for all screen sizes</p>
+                </div>
+                <div class="metric-card">
+                  <div class="metric-value">Fast</div>
+                  <p class="metric-label">Simple, lightweight frontend implementations</p>
+                </div>
+              </div>
+            </div>
 
-    <div class="col-md-4" data-aos="zoom-in">
-      <div class="card p-3">
-        <h4>Gym Website 💪</h4>
-        <p>Modern fitness website with responsive design.</p>
-        <a href="https://priyanshung1480.github.io/Gym-Website/" target="_blank" class="btn btn-custom">Live Demo</a>
+            <div class="col-lg-4">
+              <div class="profile-card">
+                <span class="profile-badge">Professional Portfolio</span>
+                <div class="profile-art">
+                  <h3>Design that feels modern and trustworthy.</h3>
+                  <p>Focused on layout clarity, responsive execution, and polished presentation for real-world business needs.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="col-md-4" data-aos="zoom-in">
-      <div class="card p-3">
-        <h4>Derma Clinic 🧴</h4>
-        <p>Professional medical website UI.</p>
-        <a href="https://priyanshung1480.github.io/Derma-Clinic-Website/" target="_blank" class="btn btn-custom">Live Demo</a>
+    <section class="section-padding" id="about">
+      <div class="container">
+        <span class="section-label">About Me</span>
+        <div class="row g-4 align-items-stretch mt-2">
+          <div class="col-lg-7">
+            <h2 class="section-title">A frontend developer who cares about first impressions.</h2>
+            <p class="section-copy">
+              I create modern websites using HTML, CSS, Bootstrap, and JavaScript foundations, with special attention to responsiveness, visual appeal, and clean user experience. My goal is to help brands present themselves professionally online through layouts that feel premium and easy to navigate.
+            </p>
+          </div>
+          <div class="col-lg-5">
+            <div class="glass-card">
+              <h3>What I bring</h3>
+              <p>I focus on elegant landing pages, service websites, and portfolio-style interfaces that balance aesthetics with usability. Every section is designed to support credibility, readability, and a stronger digital presence.</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="col-md-4" data-aos="zoom-in">
-      <div class="card p-3">
-        <h4>Batman Website 🦇</h4>
-        <p>Creative landing page using Bootstrap.</p>
-        <a href="#" class="btn btn-custom">Live Demo</a>
+    <section class="section-padding pt-0" id="skills">
+      <div class="container">
+        <span class="section-label">Core Skills</span>
+        <h2 class="section-title">Tools I use to create polished web experiences.</h2>
+        <p class="section-copy">I work with reliable frontend technologies to build visually appealing and mobile-friendly websites with structured layouts and smooth user journeys.</p>
+
+        <div class="skill-grid">
+          <article class="skill-chip">
+            <h4>HTML5</h4>
+            <p>Semantic page structure for accessible, organized, and scalable layouts.</p>
+          </article>
+          <article class="skill-chip">
+            <h4>CSS3</h4>
+            <p>Custom styling, spacing systems, responsive sections, and modern visual detail.</p>
+          </article>
+          <article class="skill-chip">
+            <h4>Bootstrap</h4>
+            <p>Fast responsive design with clean grids, utility classes, and reusable components.</p>
+          </article>
+          <article class="skill-chip">
+            <h4>JavaScript Basics</h4>
+            <p>Essential interactivity and frontend enhancements when a project needs them.</p>
+          </article>
+        </div>
       </div>
+    </section>
+
+    <section class="section-padding pt-0" id="projects">
+      <div class="container">
+        <span class="section-label">Featured Work</span>
+        <h2 class="section-title">Selected projects that show my design range.</h2>
+        <p class="section-copy">These projects highlight my ability to adapt visual style for different industries while keeping layouts clear, responsive, and engaging.</p>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-media">
+              <img src="gym.png" alt="Preview of Gym Website project">
+            </div>
+            <div class="project-body">
+              <span class="project-tag">Fitness Brand</span>
+              <h3>Gym Website</h3>
+              <p>A bold, energetic website concept designed to promote a fitness business with strong visuals, clear calls to action, and responsive structure.</p>
+              <a class="project-link" href="https://priyanshung1480.github.io/Gym-Website/" target="_blank" rel="noopener noreferrer">View live project</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <img src="derma.png" alt="Preview of Derma Clinic website">
+            </div>
+            <div class="project-body">
+              <span class="project-tag">Healthcare UI</span>
+              <h3>Derma Clinic</h3>
+              <p>A professional medical website interface with a clean presentation style that builds trust and communicates services in a polished way.</p>
+              <a class="project-link" href="https://priyanshung1480.github.io/Derma-Clinic-Website/" target="_blank" rel="noopener noreferrer">View live project</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <img src="batman.png" alt="Preview of Batman themed landing page">
+            </div>
+            <div class="project-body">
+              <span class="project-tag">Creative Landing Page</span>
+              <h3>Batman Website</h3>
+              <p>A cinematic landing page experiment showing my ability to create distinctive themed interfaces with strong visual personality.</p>
+              <a class="project-link" href="#" aria-label="Batman project link coming soon">Project link coming soon</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding pt-0" id="contact">
+      <div class="container">
+        <span class="section-label">Contact</span>
+        <h2 class="section-title">Let's build something that looks professional and performs well.</h2>
+        <p class="section-copy">If you're looking for a frontend developer for a portfolio, business website, landing page, or freelance collaboration, I’d be happy to connect.</p>
+
+        <div class="contact-wrap">
+          <div class="contact-card">
+            <h3>Get in touch</h3>
+            <p>I’m open to freelance projects, internships, entry-level opportunities, and collaborations where strong visual presentation matters.</p>
+            <ul class="contact-list">
+              <li><span>Email:</span> <a href="mailto:priyanshung08@gmail.com">priyanshung08@gmail.com</a></li>
+              <li><span>Role:</span> Frontend Developer / Web Designer</li>
+              <li><span>Focus:</span> Responsive websites, landing pages, portfolio design</li>
+            </ul>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-panel">
+              <div>
+                <h3>Why recruiters notice good portfolios</h3>
+                <p>A strong portfolio communicates more than skills. It shows taste, clarity, structure, and attention to detail, which are exactly the qualities teams look for in frontend work.</p>
+              </div>
+              <a class="btn-primary-custom mt-4" href="mailto:priyanshung08@gmail.com">Start a Conversation</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+      <span>&copy; 2026 Priyanshu Negi. All rights reserved.</span>
+      <span>Designed to create a strong first impression.</span>
     </div>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="bg-light text-center" data-aos="fade-up">
-  <div class="container">
-    <h2>Contact Me</h2>
-    <p>Email: priyanshung08@gmail.com</p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="text-center p-3">
-  <p>© 2025 Priyanshu Negi | All Rights Reserved</p>
-</footer>
-
-<!-- JS -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
-
+  </footer>
 </body>
 </html>
